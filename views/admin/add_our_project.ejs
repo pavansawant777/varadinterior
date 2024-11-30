@@ -1,0 +1,66 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 p-3 shadow">
+    <form action="/admin/save_our_project" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <h3>Add Our Project</h3>
+                </div>
+                <div class="col-md-6 col-12 mt-1 p-2">
+                    <label class="mb-2">Add Title </label>
+                    <input type="text" name="our_project_title" class="form-control rounded"
+                        placeholder="Add Title Project">
+                </div>
+                <div class="col-md-6 col-12 mt-1 p-2">
+                    <label class="mb-2">Add Description </label>
+                    <input type="text" name="our_project_description" class="form-control rounded"
+                        placeholder="Add Description Project">
+                </div>
+                <div class="col-md-6 col-12 mt-1 p-2">
+                    <label class="mb-2">Add Image </label>
+                    <input type="file" name="our_project_image" class="form-control rounded" required>
+                </div>
+                <div class="col-md-6 col-12 mt-1 p-2 text-end">
+                    <button class="btn btn-warning mt-4 rounded">Add Project Information</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+    
+    
+
+    <div class="card card-body overflow-x-scroll table-responsive">
+        <h3 class="mt-3 mb-2">List Of Projects</h3>
+    <table class="table table-bordered border-warning text-center">
+        <thead>
+          <tr>
+            <th scope="col">Action</th>
+            <th scope="col">Sr No</th>
+            <th scope="col">Project Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            <% sr=1;for(i of project_info) {%>
+          <tr>
+            <td>
+                <a href="/admin/edit_our_project/<%-i.our_project_id%>"><i class="bi bi-pencil-square text-success"></i></a>
+                <a href="/admin/delete_our_project/<%-i.our_project_id%>"><i class="bi bi-trash text-danger"></i></a>
+            </td>
+            <td><%-sr++%></td>
+            <td><%-i.our_project_title%></td>
+            <td><%-i.our_project_description%></td>
+            <td><img src="/user/images/project/<%-i.our_project_image%>" width="70px" style="border-radius: 0px !important;"></td>
+          </tr>
+          <%}%>
+        </tbody>
+      </table>
+      </div>
+    <%- include("footer.ejs") %>

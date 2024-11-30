@@ -1,0 +1,67 @@
+<%- include("navbar.ejs")%>
+
+
+    <div class="card card-body rounded-0 p-3 shadow">
+        <h2 class="text-center py-2">FAQ's Page</h2>
+        
+
+        <form action="/admin/savefaq" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>FAQ's Question</label>
+                    <input type="text" class="form-control" name="faqque">
+                </div>
+                <div class="col-md-6">
+                    <label>FAQ's Answer</label>
+                    <textarea name="faqans" rows="10" class="form-control"></textarea>
+                </div>
+
+                <div class="col-md-12 text-center py-3">
+                    <button class="btn btn-primary">Save FAQ's</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="card card-body rounded-0 p-3 shadow table-responsive">
+
+        <h2 class="text-center py-2">FAQ's Details</h2>
+
+        <table class="table table-bordered mb-3">
+
+            <tr>
+                <th>Sr</th>
+                <th>Actions</th>
+                <th>FAQ's Questions</th>
+                <th>FAQ's Answer</th>
+            </tr>
+
+
+            <% sr=1; for(i of fdata) { %>
+
+                <tr>
+                    <td><%=sr++%></td>
+                    <td>
+                        <a href="/admin/delete_faq/<%=i.id%>" ><button class="btn btn-sm mt-1 text-center btn-danger"> <i class="fa-solid fa-trash"></i> </button></a>
+                        <a href="/admin/edit_faq/<%=i.id%>" ><button class="btn btn-sm mt-1 text-center btn-primary"> <i class="fa fa-edit"></i> </button></a>
+                    
+                    </td>
+                    <td><%=i.faq_que%></td>
+                    <td><%=i.faq_ans%></td>
+                </tr>
+
+            
+            <% } %>
+            
+
+        </table>
+
+    </div>
+
+
+
+
+
+
+<%- include("footer.ejs")%>

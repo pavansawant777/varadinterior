@@ -1,0 +1,69 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 p-3 shadow">
+
+    <h1 class="text-center py-2">Employee Review</h1>
+
+    <form action="/admin/save_employee" method="post" enctype="multipart/form-data">
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="my-3">Employee Name</label>
+                <input type="text" class="form-control" name="emp_name">
+            </div>
+
+            <div class="col-md-6">
+                <label class="my-3">Employee Photo</label>
+                <input type="file" class="form-control" name="emp_img">
+            </div>
+
+            <div class="col-md-6">
+                <label class="my-3">Employee Position</label>
+                <input type="text" class="form-control" name="emp_position">
+            </div>
+
+            <div class="col-md-6">
+                <label class="my-3">Employee Review Description</label>
+                <input type="text" class="form-control" name="emp_desc">
+            </div>
+
+            <div class="col-md-12 text-center my-2  ">
+                <button class="btn btn-primary my-3">Save Employee</button>
+            </div>
+        </div>
+
+
+
+    </form>
+</div>
+
+<div class="container-fluid table-responsive">
+    <h1 class="text-center">Employee Review Details</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>Sr</th>
+            <th>Action</th>
+            <th>Emp Name</th>
+            <th>Emp Image</th>
+            <th>Emp Position</th>
+            <th>Emp Description</th>
+        </tr>
+
+        <%sr=1; for ( i of emp_review) {%>
+            <tr>
+                <td><%=sr++%></td>
+                <td>
+                    <a href="/admin/delete_emp/<%=i.id%>" ><button class="btn btn-sm mt-1 text-center btn-danger"> <i class="fa-solid fa-trash"></i> </button></a>
+                    <a href="/admin/edit_emp/<%=i.id%>" ><button class="btn btn-sm mt-1 text-center btn-primary"> <i class="fa fa-edit"></i> </button></a>
+                </td>
+                <td><%=i.emp_name%></td>
+                <td><%=i.emp_position%></td>
+                <td><%=i.emp_desc%></td>
+                <td><img src="/uploads/<%=i.emp_img%>" width="100px"></td>
+
+            </tr>
+        <%}%>
+       
+    </table>
+</div>
+<%- include("footer.ejs") %>

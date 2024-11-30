@@ -1,0 +1,28 @@
+<%- include("navbar.ejs") %>
+<div class="card card-body rounded-0 p-3 shadow">
+
+    
+    <form action="/admin/update_blog_cat" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Add Blog Category</h3>
+                </div>
+                <input type="hidden" value="<%-blog_cat.cat_id%>" name="cat_id">
+                <div class="col-md-12 mt-3">
+                    <label>Enter Blog Category</label>
+                    <input type="text" name="blog_cat" class="form-control" value="<%-blog_cat.blog_cat%>">
+                </div>
+                <div>
+                    <div class="col-md-12 mt-3 text-end">
+                        <button class="btn btn-warning">Update Category</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+    
+<%- include("footer.ejs")%>

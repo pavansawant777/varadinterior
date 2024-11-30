@@ -1,0 +1,40 @@
+<%- include("navbar.ejs")%>
+
+<div class="card card-body rounded-0 p-3 shadow">
+
+    <form action="/admin/update_about_us" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12 col-sm-12 mt-1 p-1">
+                    <h2>Update About Us Information</h2>
+                </div>
+                <input type="hidden" value="<%-about_us.about_us_id%>" name="about_us_id">
+                <div class="col-md-6 col-12 col-sm-12 mt-3 p-1">
+                    <label>Enter Heading</label>
+                    <input type="text" value="<%-about_us.about_us_heading%>" name="about_us_heading" class="form-control rounded mt-2" placeholder="Enter Heading">
+                </div>
+                <div class="col-md-6 col-12 col-sm-12 mt-3 p-1">
+                    <label>Enter Description</label>
+                    <input type="text" value="<%-about_us.about_us_description%>" name="about_us_description" class="form-control rounded mt-2" placeholder="Enter Heading">
+                </div>
+                <div class="col-md-6 col-12 col-sm-12 mt-3 p-1">
+                    <label>Enter Button Title</label>
+                    <input type="text" value="<%-about_us.about_us_btn_title%>" name="about_us_btn_title" class="form-control rounded mt-2" placeholder="Enter Heading">
+                </div>
+    
+                <div class="col-md-4 col-8 col-sm-8 mt-3 p-1">
+                    <label>Select update Image</label>
+                    <input type="file" name="about_us_image" class="form-control rounded mt-2">
+                </div>
+                <div class="col-md-2 col-4 col-sm-4 mt-5 p-1">
+                    <img src="/user/images/<%-about_us.about_us_image%>" width="80px">
+                </div>
+                <div class="col-md-12 col-12 mt-3 p-1 text-end">
+                   <button class="btn btn-warning rounded">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>
+<%- include("footer.ejs") %>

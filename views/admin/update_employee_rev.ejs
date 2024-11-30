@@ -1,0 +1,44 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 shadow py-3">
+
+    <h1 class="text-center py-2"> Update Employee Review</h1>
+
+    <form action="/admin/update_employee" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%=edata.id%>">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="my-3">Employee Name</label>
+                <input type="text" class="form-control" name="emp_name" value="<%=edata.emp_name%>">
+            </div>
+
+            <div class="col-md-3">
+                <label class="my-3">Employee Photo</label>
+                <input type="file" class="form-control" name="emp_img">
+            </div>
+
+            <div class="col-md-3">
+                <img src="/uploads/<%=edata.emp_img%>" width="150px">
+            </div>
+
+            <div class="col-md-6">
+                <label class="my-3">Employee Position</label>
+                <input type="text" class="form-control" name="emp_position" value="<%=edata.emp_position%>">
+            </div>
+
+            <div class="col-md-6">
+                <label class="my-3">Employee Review Description</label>
+                <input type="text" class="form-control" name="emp_desc" value="<%=edata.emp_desc%>">
+            </div>
+
+            <div class="col-md-12 text-center my-2  ">
+                <button class="btn btn-warning my-3">Update Employee</button>
+            </div>
+        </div>
+
+
+
+    </form>
+</div>
+
+<%- include("footer.ejs")%>

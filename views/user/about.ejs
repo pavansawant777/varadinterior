@@ -1,0 +1,326 @@
+<%- include('navbar.ejs') %>
+ <!-- Breadcrumb Section -->
+<section class="about_bread"   data-aos="fade-down" data-aos-duration="500">
+    <div class="container py-5">
+      <div class="row py-5">
+        <h1 class="text-white text-center">About</h1>
+        <nav class="breadcrumbnav" aria-label="breadcrumb mt-5">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item fs-5">
+              <a class="text-decoration-none text-white" href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item fs-5 active text-warning" aria-current="page">About Us</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section detail -->
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="overflow-hidden img_hover" style="height: 300px;">
+            <img src="/user/images/about_us/<%-about_us.about_us_info_image%>"
+              alt="Kitchen Design" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-md-6 about_us">
+          <h1 class="mb-3"><%-about_us.about_heading%></h1>
+          <p><%-about_us.about_us_desc%>
+          </p>
+          <a href="#"><button class="btn d-flex px-5 py-2 bg-dark"><%-about_us.button_name%></button></a>
+        </div>
+      </div>
+    </div>
+  <!-- About Us Section detail end -->
+
+
+  <!-- 2nd part about page  -->
+  <section class="py-5" style="background-color: #F8F9FA;">
+
+    <div class="container">
+      <div class="row">
+        <!-- Left Column with Features -->
+        <div class="col-12 col-md-6 ">
+          <h1>Why We Are Different?</h1>
+          <!-- 1st box -->
+          <div class="row py-2">
+            <div class="feature-item row align-items-center">
+              <div class="col-2 text-center fs-1 common_color">
+                <i class="fas fa-home"></i>
+              </div>
+              <div class="col-10 feature-text">
+                <h4> Our Company History</h4>
+                <p><%-mvsec.our_company_history%></p>
+              </div>
+            </div>
+          </div>
+          <!-- 2nd box -->
+          <div class="row py-2">
+            <div class="feature-item row align-items-center">
+              <div class="col-2 text-center">
+                <i class="fas fa-bar-chart fs-1 common_color"></i>
+              </div>
+              <div class="col-10 feature-text">
+                <h4>Our Success Mission</h4>
+                <p><%-mvsec.our_success_mission%></p>
+              </div>
+            </div>
+          </div>
+          <!-- 3rd box -->
+         <div class="row py-2">
+          <div class="feature-item row align-items-center">
+            <div class="col-2 text-center">
+              <i class="	fas fa-recycle fs-1 common_color"></i>
+            </div>
+            <div class="col-10 feature-text">
+              <h4>Our Future Plan</h4>
+              <p><%-mvsec.our_future_plan%></p>
+            </div>
+          </div>
+         </div>
+        </div>
+        <div class=" col-md-6">
+          <div class="overflow-hidden img_hover" style="height: 400px;">
+            <img src="/user/images/mvimage/<%-image.mvimage%>"
+              alt="Living Room Design" class="img-fluid w-100 ">
+          </div>  
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+   <!-- Project counter -->
+   <section class="counter_bg main" id="main">
+    <div class="container py-5 counte">
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="common_color">QUALITY OF WORK</h5>
+          <h1 class="text-white fw-bold"><%=count.counter_head%></h1>
+        </div>
+        <div class="col-md-6 text-center" >
+          <div class="row ">
+  
+          
+  
+  
+            <div class="col-md-6 py-3 counter_row1 count-heading">
+              <h1 class="common_color  counte count" max-data="<%=count.int_count%>"></h1>
+              <h5 class="text-white mt-4">Interior Design</h5>
+            </div>
+  
+            <div class="col-md-6 py-3 counter_row2">
+              <h1 class="common_color border-end-0 counte count" max-data="<%=count.arc_count%>"></h1><span>+</span>
+              <h5 class="text-white">Architecture </h5>
+            </div>
+  
+            <div class="col-md-6 py-3 counter_row3">
+              <h1 class="common_color counte count" max-data="<%=count.con_count%>"><sup>+</sup></h1>
+              <h5 class="text-white">Construction</h5>
+            </div>
+  
+            <div class="col-md-6 py-3 ">
+              <h1 class="common_color counte count" max-data="<%=count.pro_count%>"><sup>+</sup></h1>
+              <h5 class="text-white">Project Completed</h5>
+            </div>
+  
+  
+           
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- Project counter end -->
+
+ 
+  
+
+
+
+<!-- Team -->
+<div class="container py-5">
+  <div class="row">
+    <div class="text-left mb-4">
+      <h5 class="common_color">MEET OUR TEAM</h5>
+      <h2 class=" text-capitalize">Creative minds always
+        think someting</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+
+    <% for(i of tdata) {%>
+    <div class="col-sm-6 col-lg-3 p-2">
+      <div class="card card-body position-relative master p-0 rounded-circle master team_card">
+        <img src="/uploads/<%=i.team_img%>" alt="Team Image" class="img-fluid rounded-circle h-100 w-100">
+        <div class="team-box p-3 text-center d-flex flex-column justify-content-end align-items-center rounded-circle">
+          <div class="d-flex justify-content-center mb-2">
+            <a href="<%=i.team_facebook%>"><i class="fa-brands fa-facebook-f fs-5 common_color mx-3"></i></a>
+            <a href="<%=i.team_instagram%>"><i class="fa-brands fa-instagram fs-5 common_color mx-3"></i></a>
+            <a href="<%=i.team_twitter%>"><i class="fa-brands fa-twitter fs-5 common_color mx-3"></i></a>
+          </div>
+          <h3><%=i.team_name%></h3>
+          <small class="common_color"><%=i.team_position%></small>
+        </div>
+      </div>
+    </div>
+    <%}%>
+
+    
+
+  </div>
+</div>
+<!-- Team End -->
+  <!-- carousel testomonial -->
+    <div class="container py-5">
+      <div class="row">
+          <h5 class="common_color">TESTIMONIALS</h5>
+          <h2 class="text-capitalize">our customer words</h2>
+      </div>
+      <!-- <div class="row py-3">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel- inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-12 col-md-4 text-center">
+                  <div class="card card-body position-relative rounded-0 shadow">
+                    <div class="quats_div text-center py-2 shadow">
+                      <i class="fa-solid fa-quote-left fs-2 text-white"></i>
+                    </div>
+                    <h4 class="fw-bold">Varad Jagtap</h4>
+                    <small class="common_color">Developer</small>
+                    <div class="py-3 review_img " >
+                      <img src="/user/images/Team_img1.jpg" class="rounded-circle" height="100" width="100" alt="images">
+                    </div>
+                    <p class="fw-normal">Your guys were great knowledgeable, well experienced, efficient and neat. A true to work with intexure.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                  <div class="card card-body position-relative rounded-0 shadow">
+                    <div class="quats_div text-center py-2 shadow">
+                      <i class="fa-solid fa-quote-left fs-2 text-white"></i>
+                    </div>
+                    <h4 class="fw-bold">Varad Jagtap</h4>
+                    <small class="common_color">Developer</small>
+                    <div class="py-3 review_img">
+                      <img src="/user/images/Team_img2.jpg" class="rounded-circle" height="100" width="100" alt="images">
+                    </div>
+                    <p class="fw-normal">Your guys were great knowledgeable, well experienced, efficient and neat. A true to work with intexure.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                  <div class="card card-body position-relative rounded-0 shadow">
+                    <div class="quats_div text-center py-2 shadow">
+                      <i class="fa-solid fa-quote-left fs-2 text-white"></i>
+                    </div>
+                    <h4 class="fw-bold">Varad Jagtap</h4>
+                    <small class="common_color">Developer</small>
+                    <div class="py-3 review_img">
+                      <img src="/user/images/Team_img3.jpg" class="rounded-circle" height="100" width="100" alt="images">
+                    </div>
+                    <p class="fw-normal">Your guys were great knowledgeable, well experienced, efficient and neat. A true to work with intexure.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-12 col-md-4 text-center">
+                  <div class="card card-body position-relative rounded-0 shadow">
+                    <div class="quats_div text-center py-2 shadow">
+                      <i class="fa-solid fa-quote-left fs-2 text-white"></i>
+                    </div>
+                    <h4 class="fw-bold">Varad Jagtap</h4>
+                    <small class="common_color">Developer</small>
+                    <div class="py-3 review_img">
+                      <img src="/user/images/Team_img4.jpg" class="rounded-circle" height="100" width="100" alt="images">
+                    </div>
+                    <p class="fw-normal">Your guys were great knowledgeable, well experienced, efficient and neat. A true to work with intexure.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                  <div class="card card-body position-relative rounded-0 shadow">
+                    <div class="quats_div text-center py-2 shadow">
+                      <i class="fa-solid fa-quote-left fs-2 text-white"></i>
+                    </div>
+                    <h4 class="fw-bold">Varad Jagtap</h4>
+                    <small class="common_color">Developer</small>
+                    <div class="py-3 review_img">
+                      <img src="/user/images/Team_img1.jpg" class="rounded-circle" height="100" width="100" alt="images">
+                    </div>
+                    <p class="fw-normal">Your guys were great knowledgeable, well experienced, efficient and neat. A true to work with intexure.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                  <div class="card card-body position-relative rounded-0 shadow">
+                    <div class="quats_div text-center py-2 shadow">
+                      <i class="fa-solid fa-quote-left fs-2 text-white"></i>
+                    </div>
+                    <h4 class="fw-bold">Varad Jagtap</h4>
+                    <small class="common_color">Developer</small>
+                    <div class="py-3 review_img">
+                      <img src="/user/images/Team_img1.jpg" class="rounded-circle" height="100" width="100" alt="images">
+                    </div>
+                    <p class="fw-normal">Your guys were great knowledgeable, well experienced, efficient and neat. A true to work with intexure.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+      <div class="image-slider text-white">
+
+        
+        
+          <div class="card card-body position-relative text-center rounded-0 shadow">
+            <div class="quats_div text-center py-2 shadow">
+              <i class="fa-solid fa-quote-left fs-2 text-white"></i>
+            </div>
+            <h4 class="fw-bold text-dark">Varad Jagtap</h4>
+            <small class="common_color">Developer</small>
+            <div class="py-3 d-flex justify-content-center align-items-center review_imgs">
+              <img src="/user/images/Team_img1.jpg" class="rounded-circle" height="100" width="100" alt="images">
+            </div>
+            <p class="fw-normal text-dark">Your guys were great knowledgeable, well experienced, efficient and neat. A true to work with intexure.</p>
+          </div>
+        </div>
+        
+    
+
+      </div>
+
+      
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.image-slider').slick({
+              infinite: true,  // Continuously loop
+              slidesToShow: 3,  // Show 3 images at once on desktop
+              slidesToScroll: 1,  // Scroll one image at a time
+              autoplay: true,  // Enable auto-scrolling
+              autoplaySpeed: 3000,  // Set speed for auto-scrolling (in milliseconds)
+              arrows: false,  // Optional: hide the navigation arrows
+              dots: true,  // Optional: show dots for navigation
+              responsive: [
+                {
+                  breakpoint: 768,  // Mobile screen size
+                  settings: {
+                    slidesToShow: 1  // Show only one image at a time on mobile
+                  }
+                }
+              ]
+          });
+        });
+      </script>
+
+
+  
+
+<%- include('footer.ejs') %>

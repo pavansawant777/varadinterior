@@ -1,0 +1,81 @@
+<%- include("navbar.ejs") %>
+
+<div class="container-fluid my-5 py-5 shadow">
+
+
+<div class="card card-body rounded-0 p-3 ">
+
+    <form action="/admin/add_blog" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center " >Add Blog</h1>
+                </div>
+                <div class="col-md-6">
+                    <label>Enter Blog Heading</label>
+                    <input type="text" name="blog_head" class="form-control" placeholder="Enter Blog Heading">
+                </div>
+                <div class="col-md-6 pt-3 mt-2">
+                    <select name="cat_id" class="form-control">
+                        <option>Select blog Category</option>
+                        <% for (i of blog_cat){%>
+                        <option value="<%-i.cat_id%>"><%-i.blog_cat%></option>
+                        <%}%>
+                    </select>
+                </div>
+               
+                <div class="col-md-12 mt-3">
+                    <label>Enter Blog Description</label>
+                    <textarea name="blog_desc" class="form-control" placeholder="Enter Blog Description"></textarea>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label>Enter Blog Post By</label>
+                    <input type="text" name="blog_post_by" class="form-control" placeholder="Blog Post By">
+                </div>
+    
+    
+                <div class="col-md-6 mt-2">
+                    <label for="">Select Image</label>
+                    <input type="file" name="blog_image" class="form-control" required>
+                </div>
+                <div class="col-md-12 text-end mt-2">
+                    <button class="btn btn-warning"> Save Blog </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+
+</div>
+<div class="card card-body mt-5 overflow-x-auto pb-5 table-responsive">
+
+    <h1 class="text-center my-3">All Blog List</h1>
+    <table class="table table-bordered border-warning text-center">
+        <tr>
+            <th>Action</th>
+            <th>Sr NO</th>
+            <th>Heading</th>
+            <th>Post By</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+        <% sr=1;for(j of blog_details){%>
+            <tr>
+                <td>
+                    <a href="/admin/edit_blog_details/<%-j.blog_id%>"><i
+                        class="bi bi-pencil-square text-success"></i></a>&nbsp;&nbsp;
+                <a href="/admin/delete_blog_details/<%-j.blog_id %>"><i
+                        class="bi bi-trash text-danger"></i></a>
+                </td>
+                <td><%-sr++%></td>
+                <td><%-j.blog_head %></td>
+                <td><%-j.blog_post_by%></td>
+                <td><%-j.blog_desc%></td>
+                <td><img src="/user/images/blog/<%-j.blog_image%>" style="width: 60px;"></td>
+            </tr>
+        <%}%>
+    </table>
+</div>
+
+</div>
+<%- include("footer.ejs") %>

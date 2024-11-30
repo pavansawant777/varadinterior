@@ -1,0 +1,54 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 p-3 shadow ">
+
+    <h1 class="text-center">Update Counter</h1>
+
+    <form action="/admin/update_count" method="post" >
+        <input type="hidden" name="id" value="<%=count.id%>">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="col-md-6 ">
+                    <label class="mt-3 mb-3">Counter Heading</label>
+                    <input type="text" class="form-control" name="counter_head" value="<%-count.counter_head%>">
+                </div>
+            </div>
+    
+            <div class="col-md-6">
+                <label class="mt-3 mb-3">Count of Interior Design</label>
+                <input type="number" class="form-control" name="int_count" value="<%=count.int_count%>">
+            </div>
+    
+            <div class="col-md-6">
+                <label class="mt-3 mb-3">Count of Architecture</label>
+                <input type="number" class="form-control" name="arc_count" value="<%=count.arc_count%>">
+            </div>
+    
+            <div class="col-md-6">
+                <label class="mt-3 mb-3">Count of Construction</label>
+                <input type="number" class="form-control" name="con_count" value="<%=count.con_count%>">
+            </div>
+    
+            <div class="col-md-6">
+                <label class="mt-3 mb-3">Count of Project Completed</label>
+                <input type="number" class="form-control" name="pro_count" value="<%=count.pro_count%>">
+            </div>
+    
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary mt-3 mb-3">Save Counter</button>
+            </div>
+
+
+
+        </div>
+
+        
+
+    </form>
+
+</div>
+
+
+<%- include("footer.ejs") %>

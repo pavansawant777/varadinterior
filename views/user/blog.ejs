@@ -1,0 +1,138 @@
+<%- include('navbar.ejs') %>
+
+    <section class="blog_bread"   data-aos="fade-down" data-aos-duration="500">
+        <div class="container py-5 topbar">
+            <div class="row py-5 ">
+                <h1 class="text-white text-center">Blogs</h1>
+                <nav class="breadnav" aria-label="breadcrumb">
+                    <ol class="breadcrumb  justify-content-center">
+                        <li class="breadcrumb-item fs-5">
+                            <a class="text-decoration-none text-white" href="/">Home</a>
+                        </li>
+                        <li class="breadcrumb-item fs-5 active text-warning" aria-current="page">
+                            Blogs
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!--contact breadcrumb end -->
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-8 blog_btn ">
+                <% if (old_data.length > 0) { %> <!-- Only loop through if there are any blog records -->
+                    <% for (let i of old_data) { %>
+                        <div class="mb-5">
+                            <div class="overflow-hidden img_hover" style="height: 450px !important;">
+                                <img src="/user/images/blog/<%- i.blog_image %>" alt="Blog Image" class="img-fluid w-100">
+                            </div>
+                            <h2 class="text-capitalize mt-3"><%- i.blog_head %></h2>
+                            <p class="fs-6 mt-3"><i class="fas fa-user-alt common_color me-2"></i><%- i.blog_post_by %></p>
+                            <p class="blog_desc_css">
+                                <%- i.blog_desc%>
+                            </p>
+                            <a  href="/blog_in_det/<%-i.blog_id%>" data-blog-id="<%= i.blog_id %>"><button class="btn py-2 px-5 bg-dark text-white fw-semibold rounded-0">Read More</button></a>
+                        </div>
+                    <% } %>
+                    
+                    <!-- Only show pagination if the number of records is greater than 3 -->
+                    <% if (totalPages > 1) { %> <!-- Only show pagination if more than 1 page exists -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mt-4 justify-content-center">
+                                <!-- "Previous" link (disabled if currentPage is 1) -->
+                                <% if (currentPage > 1) { %>
+                                    <li class="page-item">
+                                        <a class="page-link btn bg-warning text-black" href="/blog?page=<%= currentPage - 1 %>&cat_id=<%= cat_id %>">Previous</a>
+                                    </li>
+                                <% } else { %>
+                                <% } %>
+            
+                                <!-- Page number links -->
+                                <% for (let i = 1; i <= totalPages; i++) { %>
+                                    <li class="page-item" style="margin-left: 5px !important;">
+                                        <a href="/blog?page=<%= i %>&cat_id=<%= cat_id %>"
+                                           class="<%= i === currentPage ? 'active' : '' %>">
+                                            <button class="btn bg-warning text-black"><%= i %></button>
+                                        </a>
+                                    </li>
+                                <% } %>
+            
+                                <!-- "Next" link (disabled if currentPage is the last page) -->
+                                <% if (currentPage < totalPages) { %>
+                                    <li class="page-item" style="margin-left: 5px !important;">
+                                        <a class="page-link btn bg-warning text-black" href="/blog?page=<%= currentPage + 1 %>&cat_id=<%= cat_id %>">Next</a>
+                                    </li>
+                                <% } else { %>
+                                    
+                                <% } %>
+                            </ul>
+                        </nav>
+                    <% } %>
+            
+                <% } else { %>
+                    <p>No blog posts available.</p> <!-- Optionally display a message if no blog records are found -->
+                <% } %>
+            </div>
+            
+
+
+            <div class="col-md-4 ">
+                <div class="card card-body rounded-0 shadow">
+                    <h3>Categories</h3>
+                    <hr class="bg-warning divider_line" />
+                    <ul class="list-group list-group-flush border-0">
+                        <li class="list-group-item border-top-0">
+                            <a href="/blog" class="text-black">All Blogs
+                                    <span class="badge bg-secondary rounded-pill mt-2 float-end"><%-blog_count.blogttl%></span></a>
+                        </li>
+                        <%for(j of cat){%>
+                            <li class="list-group-item border-top-0">
+                                <a href="/blog?cat_id=<%-j.cat_id%>" class="text-black"><%-j.blog_cat%>
+                                        <span class="badge bg-secondary rounded-pill mt-2 float-end"><%-j.ttl%></span></a>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
+
+                <div class="card card-body rounded-0 shadow mt-5">
+                    <h3 class="text-capitalize">Recent News</h3>
+                    <hr class="bg-warning divider_line" />
+                    <% for (g of news){%>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="overflow-hidden img_hover">
+                                <img src="/user/images/news/<%-g.news_image%>" alt="Blog Image" class=" w-100">
+                            </div>
+                        </div>
+                        <div class="col-8 recent_news">
+                            <p><i class="fa-regular fa-calendar-days common_color me-2"></i><%-g.news_date%></p>
+                            <h5><%-g.news_desc%></h5>
+                        </div>
+                    </div>
+                    <hr class="new_divider">
+                   <%}%>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- for recent new section live date -->
+    <script>
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        document.getElementById("year").innerHTML = year;
+    </script>
+    <!-- for recent new section live date end-->
+    </body>
+
+    <%- include('footer.ejs') %>
+    <!-- .blog_desc_css{
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      } -->

@@ -1,0 +1,37 @@
+<%- include("navbar.ejs") %>
+
+  <div class="card card-body rounded-0 p-3 shadow">
+    <form action="/admin/update_our_project" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <h3>Edit Our Project Information</h3>
+                    <input type="hidden" value="<%-our_project_info.our_project_id%>" name="our_project_id">
+                </div>
+                <div class="col-md-6 col-12 mt-1 p-2">
+                    <label class="mb-2">Add Title </label>
+                    <input type="text" name="our_project_title" value="<%-our_project_info.our_project_title%>"
+                        class="form-control rounded">
+                </div>
+
+                <div class="col-md-6 col-12 mt-1 p-2">
+                    <label class="mb-2">Add Description </label>
+                    <input type="text" name="our_project_description"
+                        value="<%-our_project_info.our_project_description%>" class="form-control rounded">
+                </div>
+                <div class="col-md-4 col-8 mt-1 p-2">
+                    <label class="mb-2">Add Image </label>
+                    <input type="file" name="our_project_image" class="form-control rounded">
+                </div>
+                <div class="col-md-2 col-4 mt-1 p-2">
+                    <img src="/user/images/project/<%-our_project_info.our_project_image%>" width="80px" class="mt-4">
+                </div>
+                <div class="col-md-6 col-12 mt-1 p-2 text-end">
+                    <button class="btn btn-warning mt-4 rounded">Update Project Information</button>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+
+    <%- include('footer.ejs')%>

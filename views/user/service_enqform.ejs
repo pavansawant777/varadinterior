@@ -1,0 +1,128 @@
+<head>
+    <link rel="stylesheet" href="/user/style.css">
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c229a7ce14.js" crossorigin="anonymous"></script>
+
+    
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+   
+
+</head>
+
+<section class="container-fluid">
+    
+                    <div class="form_container">
+                        <div class="form-box text-center rounded-4 shadow">
+                            
+                            <h1 class="title">About Yourself</h1>
+                            <form action="/save_project" method="post"  >
+                              <input type="hidden" name="plan_id" value="<%=sdata.id%>">
+                              <input type="hidden" name="service_plan" value="<%=sdata.service_plan%>">
+                              <input type="hidden" id="enq_date" name="enq_date" value="">
+                                <!-- Username field (only for Sign Up) -->
+                                <div class="input_group">
+                                    <div class="input_field namefield">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input class="bg-transparent" type="text" placeholder="Enter Your Name" name="enq_name">
+                                    </div>
+                                </div>
+
+                                <!-- Mobile field (only for Sign Up) -->
+                                <div class="input_group">
+                                    <div class="input_field numfield">
+                                        <i class="fa-solid fa-mobile-screen"></i>
+                                        <input class="bg-transparent" type="number" placeholder="Your Mobile No" name="enq_mobile">
+                                    </div>
+                                </div>
+
+                                <!-- Email field (shown for both Sign Up and Log In) -->
+                                <div class="input_group">
+                                    <div class="input_field emailfield">
+                                        <i class="fa-regular fa-envelope"></i>
+                                        <input class="bg-transparent" type="email" placeholder="Enter Your Email" name="enq_email">
+                                    </div>
+                                </div>
+
+                                <!-- Password field (shown for both Sign Up and Log In) -->
+                                <div class="input_group">
+                                    <div class="input_field passwordfield">
+                                        <i class="fa-solid fa-key"></i>
+                                        <input class="bg-transparent" type="text" placeholder="Address" name="enq_address">
+                                    </div>
+                                </div>
+
+                                <!-- Toggle between Sign Up and Log In -->
+                                <div class=" about_us">
+                                    <div class="row ">
+                                        <div class="col-md-12 text-center">
+                                    <button class="btn signupbtn bg-dark" type="submit" onclick="showAlert()">Submit</button>
+                                </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+   const signup = document.querySelector('.signupbtn');
+   const login = document.querySelector('.loginbtn');
+   const namefield = document.querySelector('.namefield');
+   const numfield = document.querySelector('.numfield');
+   const emailfield = document.querySelector('.emailfield');
+   const passwordfield = document.querySelector('.passwordfield');
+   const title = document.querySelector('.title');
+   const underline = document.querySelector('.underline');
+   
+   // Function to set up Sign Up view
+   function setUpSignUpView() {
+       namefield.classList.add('show');
+       numfield.classList.add('show');
+       emailfield.classList.add('show');
+       passwordfield.classList.add('show');
+       signup.classList.remove('disable');
+       login.classList.add('disable');
+   }
+   // Set initial view to Sign Up
+   setUpSignUpView();
+
+   // Event listeners for toggling views
+   signup.addEventListener('click', setUpSignUpView);
+});
+
+
+
+ </script>
+ <script>
+    function showAlert() {
+  Swal.fire({
+    position: "center-center",
+    icon: "success",
+    title: "Your Service Enquiry has been sent",
+    showConfirmButton: false,
+    timer: 5000
+  });
+}
+showAlert();
+ </script>
+ <script>
+    document.getElementById('enq_date').value = new Date().toISOString().split('T')[0];
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

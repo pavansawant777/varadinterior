@@ -1,0 +1,34 @@
+<%-include("navbar.ejs")%>
+
+<div class="card card-body rounded-0 p-3 shadow">
+    <form action="/admin/update_work_heading" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <h3>Update Heading</h3>
+                    <input type="hidden" value="<%-work_sec.work_sec_id%>" name="work_sec_id">
+                </div>
+                <div class="col-md-6 col-12 mt-1">
+                    <label class="mb-2">Update Sec Heading</label>
+                    <input type="text" name="sec_heading" value="<%-work_sec.sec_heading%>" class="form-control rounded">
+                </div>
+                <div class="col-md-6 col-12 mt-1">
+                    <label class="mb-2">Update Main Heading</label>
+                    <input type="text" name="main_heading" value="<%-work_sec.main_heading%>" class="form-control rounded">
+                </div>
+                <div class="col-md-6 col-12 mt-1">
+                    <label class="mb-2">Update Sub Heading</label>
+                    <input type="text" name="sub_heading" value="<%-work_sec.sub_heading%>" class="form-control rounded">
+                </div>
+                <div class="col-md-6 col-12 text-end mt-3">
+                   <button class="btn bg-warning mt-4 text-white">Update Information</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<%-include("footer.ejs")%>
+
+

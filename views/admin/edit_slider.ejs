@@ -1,0 +1,55 @@
+<%- include("navbar.ejs") %>
+
+
+<div class="card card-body rounded-0 p-3 shadow">
+
+    <h2 class="text-center">Edit Slider </h2>
+
+    <form action="/admin/update_slider" method="post" enctype="multipart/form-data" class="mt-3">
+        
+        <input type="hidden" name="id"  value="<%=slider_info.id%>">
+
+        <div class="row">
+            <div class="col-md-3">
+                <label class="mt-3">Select Image</label>
+                <input type="file" class="form-control mt-3" name="slider_img" accept="Image/jpeg , Image/png">
+            </div>
+
+            <div class="col-md-3">
+                <img src="/uploads/<%=slider_info.slider_img%>" width="100px">
+            </div>
+
+            <div class="col-md-6">
+                <label class="mt-3">Slider Heading</label>
+                <input type="text" class="form-control mt-3" name="slider_head" value="<%=slider_info.slider_head%>">
+            </div>
+
+            <div class="col-md-6">
+                <label class="mt-3 mb-2">Slider Sub Heading</label>
+                <textarea class="form-control" name="slider_subhead" cols="50" rows="10"><%=slider_info.slider_subhead%></textarea>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="mt-3 mb-3">Button Name</label>
+                        <input type="text" name="slider_btn_name" class="form-control" value="<%=slider_info.slider_btn_name%>">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="mt-3 mb-3">Button URL</label>
+                        <input type="url" name="slider_btn_url" class="form-control" value="<%=slider_info.slider_btn_url%>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 text-center mt-3 mb-3">
+                <button class="btn btn-primary">Update Slider</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<%- include("footer.ejs") %>

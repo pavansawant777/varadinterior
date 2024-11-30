@@ -1,0 +1,47 @@
+<%- include('navbar.ejs')%>
+
+<div class="card card-body rounded-0 p-3 shadow">
+    <form action="/admin/add_instagram_images" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Add Image</h3>
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label class="mb-2">Add Instagram Post Image</label>
+                    <input type="file" name="insta_image" class="form-control" required> 
+                </div>
+                <div class="col-md-6 text-end mt-4">
+                    <button class="btn btn-warning">Add Image</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+
+<div class="container mt-4 table-responsive">
+    <h3>All Image List</h3>
+    <table class="table table-bordered border-warning text-center">
+        <tr>
+            <th>Action</th>
+            <th>Sr No</th>
+            <th>Image</th>
+        </tr>
+        <%sr=1; for(i of insta_img){%>
+            <tr>
+                <td>
+                    <a href="/admin/edit_insta_image/<%-i.insta_img_id%>"><i
+                        class="bi bi-pencil-square text-success"></i></a>&nbsp;&nbsp;
+                <a href="/admin/delete_insta_image/<%-i.insta_img_id%>"><i
+                        class="bi bi-trash text-danger"></i></a>
+                </td>
+                <td><%-sr++%></td>
+                <td><img src="/user/images/instagram/<%-i.insta_image%>" class="w-25"></td>
+            </tr>
+        <%}%>
+    </table>
+</div>
+<%- include('footer.ejs')%>

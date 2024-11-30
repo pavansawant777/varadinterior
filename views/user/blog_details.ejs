@@ -1,0 +1,117 @@
+<%- include('navbar.ejs')%>
+  <!-- blog breadcrumb -->
+  <section class="blog_bread" data-aos="fade-down" data-aos-duration="500" style="background-image: url('/user/images/blog/blog_detail_bread.jpg');">
+    <div class="container py-5">
+      <div class="row py-5">
+        <h1 class="text-white text-center">Blogs Details</h1>
+        <nav   class="breadnav" aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item">
+              <a  class="text-decoration-none text-white  " href="/">Home</a></li>
+            <li class="breadcrumb-item active text-warning " aria-current="page">Blogs Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+   <!-- blog breadcrumb end -->
+  <div class="container py-5">
+      <div class="row">
+          <div class=" col-md-8 ">
+            <% for (let i of old_data) { %>
+            <div>
+              <div class="overflow-hidden img_hover" style="height: 450px !important;">
+                  <img src="/user/images/blog/<%- i.blog_image %>" alt="Blog Image" class=" img-fluid w-100">
+                </div>
+              <h1 class="mt-2 text-capitalize"><%- i.blog_head %></h1>
+              <p class="fw-normal fs-5 text-justify"><%- i.blog_desc %></p>
+            </div>
+            <% } %>
+
+              <div class="row py-4">
+                  <% for (j of blog){ %>
+                  <div class="col-md-6 text-left related_info">
+                      <div>
+                        <div class="overflow-hidden img_hover" style="height: 250px !important;">
+                          <img src="/user/images/blog/<%- j.blog_image %>" alt="Blog Image" class=" img-fluid w-100 h-100">
+                        </div>
+                          <h2 class=" mt-3"></span></h2>
+                          <p class="mt-3"><i class="fas fa-user-alt common_color me-1"></i> <%-j.blog_post_by%></p>
+                          <h4><%-j.blog_head%></h4>                       
+                          <p class="fw-normal blog_desc_css"><%-j.blog_desc%></p>
+                          <a href="/blog_in_det/<%- j.blog_id%>" class="common_color fw-bold rounded-0 mt-3">Read More ➔</a>
+                          <script>
+                          </script>
+                      </div>
+                  </div>
+                  <%}%>
+              </div>
+      </div>
+      <div class="col-md-4 ">
+        <div class="card card-body rounded-0 shadow">
+          <h3>Categories</h3>
+          <hr class="bg-warning divider_line" />
+          <ul class="list-group list-group-flush border-0">
+            <li class="list-group-item border-top-0">
+                <a href="/blog" class="text-black">All Blogs
+                        <span class="badge bg-secondary rounded-pill mt-2 float-end"><%-blog_count.blogttl%></span></a>
+            </li>
+            <%for(j of cat){%>
+                <li class="list-group-item border-top-0">
+                    <a href="/blog?cat_id=<%-j.cat_id%>" class="text-black"><%-j.blog_cat%>
+                            <span class="badge bg-secondary rounded-pill mt-2 float-end"><%-j.ttl%></span></a>
+                </li>
+                <%}%>
+        </ul>
+        </div>
+
+        <div class="card card-body rounded-0 shadow mt-5">
+          <h3 class="text-capitalize">Recent News</h3>
+          <hr class="bg-warning divider_line" />
+          <% for (g of news){%>
+            <div class="row">
+                <div class="col-4">
+                    <div class="overflow-hidden img_hover">
+                        <img src="/user/images/news/<%-g.news_image%>" alt="Blog Image" class=" w-100">
+                    </div>
+                </div>
+                <div class="col-8 recent_news">
+                    <p><i class="fa-regular fa-calendar-days common_color me-2"></i><%-g.news_date%></p>
+                    <h5><%-g.news_desc%></h5>
+                </div>
+            </div>
+            <hr class="new_divider">
+           <%}%>
+        
+         
+          
+        </div>
+
+        <div class="card card-body rounded-0 shadow mt-5">
+          <h3 class="text-capitalize">Social Feed</h3>
+          <hr class="bg-warning divider_line" />
+          <div class="row">
+          
+            <% for(a of insta_img){%>
+            <div class="col-4 mt-3">
+                <div class="overflow-hidden img_hover">
+                  <img src="/user/images/instagram/<%-a.insta_image%>" alt="Blog Image" class=" w-100">
+                </div>
+            </div>
+
+            <%}%>
+          </div>
+          <div class="row mt-3">
+            <a href="#">
+              <h5 class="text-black mt-3">Follow On Instagram</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  <script>
+    AOS.init();
+</script>
+
+<%- include('footer.ejs')%>

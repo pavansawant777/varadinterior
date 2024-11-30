@@ -1,0 +1,92 @@
+<%- include("navbar.ejs")%>
+<section class="gallery_bg" data-aos="fade-down" data-aos-duration="500">
+    <div class="container py-5 topbar">
+      <div class="row py-5">
+        <h1 class="text-white text-center">Gallery</h1>
+        <nav class="breadnav" aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item fs-5">
+              <a class="text-decoration-none text-white" href="/index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item fs-5 active text-warning" aria-current="page">
+              Gallery
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!-- Gallery bread end -->
+  <div class="container py-5">
+    <div class="row">
+
+      <% for(i of gdata) { %>
+
+        <div class="col-sm-12 col-lg-4 p-1" data-aos="zoom-in" data-aos-duration="900">
+          <div class="position-relative master allimg_size">
+            <div class="overlay-div p-3">
+             
+                <a>
+                  <i class="fa-solid fa-heart heart-icon" data-bs-toggle="tooltip" data-bs-placement="right"
+                data-bs-title="Like!" style="cursor: pointer;" onclick="img_count();"></i>
+                </a>
+
+            
+              <p class="text-white">Hall Architecture</p>
+            </div>
+            <img src="/uploads/<%=i.gallery_img%>" alt="Blog Image" class="img-fluid w-100 h-100">
+           
+          </div>
+        </div>
+
+      <% } %>
+
+      
+    </div>
+  </div>
+
+
+<script>
+
+var photo_count = 0;
+
+function img_count() {
+  const heartIcon = document.querySelector(".heart-icon");
+
+    heartIcon.addEventListener("click", function () {
+    
+      heartIcon.classList.toggle("liked");
+
+  
+    if (heartIcon.classList.contains("liked")) {
+      photo_count++;
+    } 
+
+    console.log(photo_count);
+
+   
+    
+  });
+  
+}
+
+// Call the function to attach the event listener
+
+    
+    // for tooltip
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+              
+         
+</script>
+
+
+
+
+
+
+
+
+
+
+<%- include("footer.ejs")%>

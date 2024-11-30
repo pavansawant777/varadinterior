@@ -1,0 +1,31 @@
+<%- include('navbar.ejs')%>
+<div class="card card-body rounded-0 p-3 shadow">
+    <form action="/admin/update_news" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Update News</h3>
+                    <input type="hidden" name="news_id" value="<%-news.news_id%>">
+                </div>
+                <div class="mt-2 col-md-6">
+                    <label for="" class="mb-1">Select update date</label>
+                    <input type="date" name="news_date" class="form-control" value="<%-news.news_date%>">
+                </div>
+                <div class="mt-2 col-md-4">
+                    <label for="" class="mb-1">Select update image</label>
+                    <input type="file" name="news_image" class="form-control" value="<%-news.news_image%>">
+                </div>
+                <div class="col-md-2">
+                    <img src="/user/images/news/<%-news.news_image%>" class="w-25 mt-3">
+                </div>
+                <div class="mt-2 col-md-12">
+                    <label for="" class="mb-1">Update News Description</label>
+                    <textarea name="news_desc" class="form-control" placeholder="Enter News Description"><%-news.news_desc%></textarea>
+                </div>
+                <div class="col-md-12 mt-3 text-end">
+                    <button class="btn btn-warning">Update News</button>
+                </div>
+        </div>
+    </form>
+</div>
+<%-include('footer.ejs')%>

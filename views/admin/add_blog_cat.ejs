@@ -1,0 +1,60 @@
+<%- include("navbar.ejs") %>
+
+<div class="container-fluid my-5 py-5 shadow">
+
+
+
+
+
+
+<div class="card card-body rounded-0 p-3 ">
+    <form action="/admin/save_blog_cat" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">Add Blog Category</h1>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label>Enter Blog Category</label>
+                    <input type="text" name="blog_cat" class="form-control" placeholder="Enter Blog Category">
+                </div>
+                <div>
+                    <div class="col-md-12 mt-3 text-end">  
+                        <button class="btn btn-warning">Save Category</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+    
+
+    <div class="card card-body mt-5 overflow-x-auto table-responsive">
+        <table class="table table-bordered border-warning text-center">
+            <tr>
+                <th>Action</th>
+                <th>Sr No</th>
+                <th>Category Name</th>
+            </tr>
+            <%sr=1; for(i of blog_cat){%>
+                <tr>
+                    <td>
+                        <a href="/admin/edit_blog_cat/<%-i.cat_id%>"><i
+                                class="bi bi-pencil-square text-success"></i></a>&nbsp;&nbsp;
+                        <a href="/admin/delete_blog_cat/<%-i.cat_id%>"><i class="bi bi-trash text-danger"></i></a>
+                    </td>
+                    <td>
+                        <%- sr++%>
+                    </td>
+                    <td>
+                        <%-i.blog_cat%>
+                    </td>
+                </tr>
+                <%}%>
+        </table>
+    </div>
+
+</div>
+    <%- include("footer.ejs") %>

@@ -1,0 +1,160 @@
+<%- include("navbar.ejs") %>
+<%
+function removeHtmlTags(text) {
+    return text.replace(/<[^>]*>/g, '');
+}
+%>
+
+
+
+    <section class="service_bread" data-aos="fade-down" data-aos-duration="500">
+        <div class="container py-5 topbar">
+          <div class="row py-5">
+            <h1 class="text-white text-center">Services</h1>
+            <nav class="breadnav" aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item fs-5">
+                  <a class="text-decoration-none text-white" href="/index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item fs-5 active text-warning" aria-current="page">
+                  Services
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+      <!-- Service bread end -->
+      <!-- Services card -->
+      <div class="container py-4">
+        <!-- Row 1 -->
+        <div class="row">
+          <!-- Card 1 -->
+          <% for(i of sdata) { %>
+          <div class="col-md-3 p-3" data-aos="zoom-out" data-aos-duration="500">
+            <div class="card-body text-center shadow service_bg">
+              <div class="plan_heading py-1 shadow-sm">
+                <h4 class="text-white"><%=i.service_plan%> </h4>
+              </div>
+              <div class="py-4">
+                <h2><span><i class="fa-solid fa-indian-rupee-sign fs-6"></i></span><%=i.service_rate%>/<span
+                    class="fs-5">ft<sup>2</sup></span></h2>
+                <h6 class="mt-3 fw-normal">Standard Feature</h6>
+                <h6 class="mt-3 fw-normal">Lifetime free support</h6>
+                <h6 class="mt-3 fw-normal">Extra features</h6>
+                <h6 class="mt-3 fw-normal">Upgrade options</h6>
+                <h6 class="mt-3 fw-normal">Full access</h6>
+                <div class="py-3 about_us">
+                    <!-- <button class="btn btn-dark fs-6 border-0 rounded-0 text-uppercase fw-bold" data-bs-target="#exampleModal" data-bs-toggle="modal" data-name="<%=sdata.id%>">Choose Plan</button> -->
+                    <a href="/service_enqform/<%=i.id%>"><button class="btn btn-dark fs-6 border-0 rounded-0 text-uppercase fw-bold" data-bs-target="#exampleModal" data-bs-toggle="modal">Choose Plan</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% } %>
+    
+          
+        </div>
+      </div>
+
+
+
+<%- include("footer.ejs") %>
+
+
+
+
+
+<!-- <section class="modal-bg">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="form_container">
+                        <div class="form-box text-center rounded-4 shadow">
+                            <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h1 class="title">About Yourself</h1>
+                            <form action="/save_project" method="post">
+                                <input type="hidden" name="id" value="<%=sdata.id%>">
+                              
+                                <div class="input_group">
+                                    <div class="input_field namefield">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input class="bg-transparent" type="text" placeholder="Enter Your Name" name="enq_name">
+                                    </div>
+                                </div>
+
+                            
+                                <div class="input_group">
+                                    <div class="input_field numfield">
+                                        <i class="fa-solid fa-mobile-screen"></i>
+                                        <input class="bg-transparent" type="number" placeholder="Your Mobile No" name="enq_mobile">
+                                    </div>
+                                </div>
+
+                               
+                                <div class="input_group">
+                                    <div class="input_field emailfield">
+                                        <i class="fa-regular fa-envelope"></i>
+                                        <input class="bg-transparent" type="email" placeholder="Enter Your Email" name="enq_email">
+                                    </div>
+                                </div>
+
+                               
+                                <div class="input_group">
+                                    <div class="input_field passwordfield">
+                                        <i class="fa-solid fa-key"></i>
+                                        <input class="bg-transparent" type="text" placeholder="Address" name="enq_address">
+                                    </div>
+                                </div>
+
+                               
+                                <div class=" about_us">
+                                    <div class="row ">
+                                        <div class="col-md-12 text-center">
+                                    <button class="btn signupbtn bg-dark" type="submit">Submit</button>
+                                </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+   <!-- Modal end -->
+      <!-- signup script -->
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+   const signup = document.querySelector('.signupbtn');
+   const login = document.querySelector('.loginbtn');
+   const namefield = document.querySelector('.namefield');
+   const numfield = document.querySelector('.numfield');
+   const emailfield = document.querySelector('.emailfield');
+   const passwordfield = document.querySelector('.passwordfield');
+   const title = document.querySelector('.title');
+   const underline = document.querySelector('.underline');
+   
+   // Function to set up Sign Up view
+   function setUpSignUpView() {
+       namefield.classList.add('show');
+       numfield.classList.add('show');
+       emailfield.classList.add('show');
+       passwordfield.classList.add('show');
+       signup.classList.remove('disable');
+       login.classList.add('disable');
+   }
+   // Set initial view to Sign Up
+   setUpSignUpView();
+
+   // Event listeners for toggling views
+   signup.addEventListener('click', setUpSignUpView);
+});
+
+
+ </script> -->
+ <!-- signup script end -->

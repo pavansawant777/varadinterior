@@ -1,0 +1,25 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 p-3 shadow">
+
+    <form action="/admin/save_gallery" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Add Imagae</h3>
+                </div>
+                <div class="col-md-6">
+                    <label for="">select image</label>
+                    <input type="file" name="gallery_image" class="form-control">
+                </div>
+                <div class="col-md-6 mt-4 text-end">
+                    <button class="btn btn-warning">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+<%- include("footer.ejs") %>

@@ -1,0 +1,91 @@
+
+<%- include("navbar.ejs")  %>
+
+<div class="card card-body rounded-0 shadow py-3 ">
+    <h1 class="py-2 text-center">Team Member Section</h1>
+
+    <form action="/admin/save_team" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="my-3">Team Member Name</label>
+                <input type="text" name="team_name" class="form-control">
+            </div>
+
+            <div class="col-md-6">
+                <label class="my-3">Team Memeber's Instagram link</label>
+                <input type="url" name="team_instagram" class="form-control">
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="my-3">Team Member Photo </label>
+                <input type="file" name="team_img" class="form-control">
+            </div>
+           
+
+            
+
+            <div class="col-md-6">
+                <label class="my-3">Team Memeber's Facebook link</label>
+                <input type="url" name="team_facebook" class="form-control">
+            </div>
+
+           
+
+            <div class="col-md-6">
+                <label class="my-3">Team Member Position </label>
+                <input type="text" name="team_position" class="form-control">
+            </div>
+
+            
+
+            <div class="col-md-6">
+                <label class="my-3">Team Memeber's Twitter link</label>
+                <input type="url" name="team_twitter" class="form-control">
+            </div>
+
+            <div class="col-md-12 py-3 text-center">
+                <button class="btn btn-primary">Save Team</button>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+<div class="card card-body rounded-0 shadow table-responsive py-3 mb-5">
+    <h1 class="py-3 text-center">Team Member Details</h1>
+
+    <table class="table table-bordered ">
+        <tr>
+            <th>Sr</th>
+            <th>Action</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Image</th>
+            <th>facebook Link</th>
+            <th>Instagram Link</th>
+            <th>Twitter Link</th>
+        </tr>
+
+        <%sr=1; for(i of tdata) { %>
+            <tr>
+                <td><%=sr++%></td>
+                <td>
+                    <a href="/admin/delete_team/<%=i.id%>" ><button class="btn btn-sm mt-1 text-center btn-danger"> <i class="fa-solid fa-trash"></i> </button></a>
+                    <a href="/admin/edit_team/<%=i.id%>" ><button class="btn btn-sm mt-1 text-center btn-primary"> <i class="fa fa-edit"></i> </button></a>
+                    
+                </td>
+                <td><%=i.team_name%></td>
+                <td><%=i.team_position%></td>
+                <td> <img src="/uploads/<%=i.team_img%>" height="100px"> </td>
+                <td><%=i.team_facebook%></td>
+                <td><%=i.team_instagram%></td>
+                <td><%=i.team_twitter%></td>
+            </tr>
+
+        <% } %>
+    </table>
+</div>
+
+<%- include("footer.ejs")  %>

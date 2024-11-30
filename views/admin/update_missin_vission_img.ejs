@@ -1,0 +1,28 @@
+<%- include('navbar.ejs') %>
+
+<div class="card card-body rounded-0 shadow p-3">
+    <form action="/admin/update_mission_vission_img_" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Update Image</h3>
+                </div>
+                <input type="hidden" name="mvid" value="<%-mvimage.mvid%>">
+
+                <div class="col-md-4">
+                    <label for="">Select Image</label>
+                    <input type="file" name="mvimage" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <img src="/user/images/mvimage/<%-mvimage.mvimage%>" class="w-50">
+                </div>
+                <div class="col-md-6 text-end">
+                    <button class="btn btn-warning">Update Image</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+ 
+    <%- include('footer.ejs') %>

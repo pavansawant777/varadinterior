@@ -1,0 +1,28 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 shadow p-3">
+   
+    <form action="/admin/update_testimonial_desc" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><h3>Update Testimonial</h3></div>
+                <input type="hidden" value="<%-test_info.testimonial_info_id%>" name="testimonial_info_id">
+                <div class="mt-2  col-md-6">
+                    <label class="p-2">Enter Heading</label>
+                    <input type="text" name="testimonial_heading" value="<%-test_info.testimonial_heading%>" placeholder="Enter Heading" class="form-control rounded">
+                </div>
+                <div class="mt-2  col-md-6">
+                    <label class="p-2">Enter Description</label>
+                    <input type="text" name="testimonial_description" placeholder="Enter Description" class="form-control rounded" value="<%-test_info.testimonial_description%>">
+                </div>
+                <div class="mt-2  col-md-12 text-end">
+                    <button class="btn btn-warning">Update Information</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+<%- include("footer.ejs") %>

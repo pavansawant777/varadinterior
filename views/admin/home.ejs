@@ -1,0 +1,64 @@
+<%- include("navbar.ejs")%>
+
+<div class="container shadow ">
+    <h1 class=" p-3 fw-bold">Dashboard </h1>
+    <div class="row mt-2 card-body mt-2  ">
+        <div class="col-md-6 mt-5 ">
+            <div class="container-fluid">
+                <div class="row">
+                    <a href="/admin/contact_enq" class="text-center text-dark" >
+                        <div class="col-md-12 card-body card pt-3">
+                            <p class="fs-4 text-center fw-bold">Pending Contact Enquiry </p>
+                            <p class="fs-4 text-center fw-bold text-danger"><%-con_enq.total_enquiries%></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-5 ">
+            <div class="container-fluid">
+                <div class="row">
+                    <a href="/admin/service_enq" class="text-center text-dark" >
+                        <div class="col-md-12 card-body card pt-3">
+                            <p class="fs-4 text-center fw-bold">Pending Service Enquiry </p>
+                            <p class="fs-4 text-center fw-bold text-danger"><%-ser_enq.ttl_ser_enq%></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt- card-body table-responsive p-1 " id="contact_enq">
+        <div class="col-md-12 card-body fs-4 mt-2 fw-bold">
+            Pending Contact Enquiry List
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center card-body ">
+                <tr>
+                    <th>Sr No</th>
+                    <th>First Name</th>
+                    <th>last Name</th>
+                    <th>Enquiry About</th>
+                    <th>Enquiry Email</th>
+                    <th>Enquiry Message</th>
+                    <th>Enquiry Mobile</th>
+                    <th>Status</th>
+                </tr>
+                <% sr=1 ;for(i of enq){%>
+                    <tr>
+                        <td><%-sr++%></td>
+                        <td><%-i.enq_fname%></td>
+                        <td><%-i.enq_lname%></td>
+                        <td><%-i.enq_about%></td>   
+                        <td><%-i.enq_email%></td>
+                        <td><%-i.enq_msg%></td>
+                        <td><%-i.enq_mobile%></td>
+                        <td><button class="btn btn-danger"><%-i.status%></button></td>
+                    </tr>
+                <%}%>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs")%>

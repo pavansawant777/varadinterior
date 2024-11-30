@@ -1,0 +1,67 @@
+<%- include("navbar.ejs")%>
+
+    <div class="card card-body rounded-0 shadow pb-3">
+
+        <h1 class="text-center py-2">Project Section</h1>
+
+        <form action="/admin/update_project" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" name="id" value="<%=pdata.id%>">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="py-3">Type of Project</label>
+                    <input type="text" name="project_type" class="form-control" value="<%=pdata.project_type%>">
+                </div>
+                <div class="col-md-6">
+                    <label class="py-3">Project Name</label>
+                    <input type="text" name="project_name" class="form-control" value="<%=pdata.project_name%>">
+                </div>
+                <div class="col-md-6">
+                    <label class="py-3">Client Name</label>
+                    <input type="text" name="client_name" class="form-control" value="<%=pdata.client_name%>">
+                </div>
+                <div class="col-md-3">
+                    <label class="py-3">Select Project Image</label>
+                    <input type="file" name="project_img" class="form-control">
+                </div>
+
+                <div class="col-md-3">
+                    <img src="/uploads/<%=pdata.project_img%>" width="100px">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="py-3">Project Date</label>
+                    <input type="date" name="project_date" class="form-control" value="<%=pdata.project_date%>">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="py-3">Project Budget</label>
+                    <input type="number" name="project_budget" class="form-control" value="<%=pdata.project_budget%>">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="py-3">Project Basic Information</label>
+                    <textarea name="project_basic_info" class="form-control" rows="3"> <%=pdata.project_basic_info%>  </textarea>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="py-3">Project Challenges</label>
+                    <textarea name="project_challenge" class="form-control" rows="5"> <%=pdata.project_challenge%> </textarea>
+                </div>
+
+
+
+                <div class="col-md-12 text-center py-3">
+                    <button class="btn btn-primary">Update Project</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+   
+
+
+
+<%- include("footer.ejs")%>

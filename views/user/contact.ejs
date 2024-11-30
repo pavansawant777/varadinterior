@@ -1,0 +1,174 @@
+<%- include("navbar.ejs") %>
+
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<section class="bread_bg"  data-aos="fade-down" data-aos-duration="500">
+    <div class="container py-5 topbar">
+      <div class="row py-5 mb-5">
+        <h1 class="text-white text-center">Contact</h1>
+        <nav class="breadnav" aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item fs-5">
+              <a class="text-decoration-none text-white" href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item fs-5 active text-warning" aria-current="page">
+              Contact Us
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+</section>
+
+
+
+
+<section>
+    <div class="container py-5" style=" position: relative; margin-top:-100px; z-index: 1;">
+      <div class="row">
+        <div class="col-md-4 text-center " data-aos="flip-up">
+          <div class="card card rounded-0 shadow py-5 h-100 px-2">
+            <i class="fa-solid fa-earth-americas fs-2 common_color"></i>
+            <h4 class="mt-3">Visit Our Office</h4>
+            <p><%=cdata.contact_add%></p>
+          </div>
+        </div>
+        <div class="col-md-4 text-center contact_details" data-aos="flip-up">
+          <div class="card card rounded-0 shadow py-5 h-100 px-2">
+            <i class="fa-solid fa-headset fs-2 common_color"></i>
+            <h4 class="mt-3">Call Us</h4>
+            <p>+91 <%=cdata.contact_mobile%> <br>Mon - Friday: <%=cdata.contact_am%>am to <%=cdata.contact_pm%>pm</p>
+          </div>
+        </div>
+        <div class="col-md-4 text-center contact_details" data-aos="flip-up">
+          <div class="card card rounded-0 shadow py-5 h-100 px-2">
+            <i class="fa-solid fa-envelope fs-2 common_color"></i>
+            <h4 class="mt-3">Mail Us</h4>
+            <p><%=cdata.contact_email%></p>
+          </div>
+        </div>
+        <p class="text-center mt-5 fs-5">We’re here to help with any question of our customers,Go to <a
+            class="text-decoration-none common_color" href="/faq">FAQ's</a></p>
+      </div>
+    </div>
+  </section>
+  <!-- contact card end -->
+  <!-- contact form -->
+  <section>
+    <div class="container py-5 contact">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8 text-center">
+          <p class="common_color fs-5">DROP US A LINE</p>
+          <h1>SEND YOUR MESSAGE</h1>
+          <p class="fs-5">If you have question or would like more information on our works, Please complete the form and
+            we’ll aim get back to you with in 24 hours.</p>
+        </div>
+      </div>
+      <div class="row">
+        <form id="feedback-form" action="/save_contact" method="post" class="d-flex justify-content-center">
+          <input type="hidden" name="id">
+          <input type="hidden" id="con_date" name="con_date">
+          <div class="col-md-10">
+              <div class="card card-body rounded-0 p-4">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="input-group mb-3 input_bg_color">
+                              <span class="input-group-text rounded-0 bg-transparent border-0" id="basic-addon1">
+                                  <i class="fa-solid fa-user fs-5 common_color"></i>
+                              </span>
+                              <input type="text" required class="form-control rounded-0 bg-transparent inputs border-0"
+                                  placeholder="First Name" name="enq_fname" aria-label="First Name" aria-describedby="basic-addon1">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="input-group mb-3 input_bg_color">
+                              <span class="input-group-text rounded-0 bg-transparent border-0" id="basic-addon1">
+                                  <i class="fa-solid fa-user fs-5 common_color"></i>
+                              </span>
+                              <input type="text" required class="form-control rounded-0 bg-transparent inputs border-0"
+                                  placeholder="Last Name" name="enq_lname" aria-label="Last Name" aria-describedby="basic-addon1">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="input-group mb-3 input_bg_color">
+                              <span class="input-group-text rounded-0 bg-transparent border-0" id="basic-addon1">
+                                  <i class="fa-solid fa-question fs-5 common_color"></i>
+                              </span>
+                              <input required type="text" class="form-control rounded-0 bg-transparent inputs border-0"
+                                  placeholder="Enquiry About" name="enq_about" aria-label="Enquiry About" aria-describedby="basic-addon1">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="input-group mb-3 input_bg_color">
+                              <span class="input-group-text rounded-0 bg-transparent border-0" id="basic-addon1">
+                                  <i class="fa-solid fa-phone fs-5 common_color"></i>
+                              </span>
+                              <input required type="number" class="form-control rounded-0 bg-transparent inputs border-0"
+                                  placeholder="Phone" name="enq_mobile" aria-label="Phone" aria-describedby="basic-addon1">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="input-group mb-3 input_bg_color">
+                              <span class="input-group-text rounded-0 bg-transparent border-0" id="basic-addon1">
+                                  <i class="fa-solid fa-envelope fs-5 common_color"></i>
+                              </span>
+                              <input required type="email" class="form-control rounded-0 bg-transparent inputs border-0"
+                                  placeholder="Email" name="enq_email" aria-label="Email" aria-describedby="basic-addon1">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="input-group input_bg_color">
+                              <span class="input-group-text rounded-0 bg-transparent border-0">
+                                  <i class="fa-regular fa-message fs-5 common_color"></i>
+                              </span>
+                              <textarea class="form-control form-control rounded-0 bg-transparent inputs border-0"
+                                  placeholder="Message" name="enq_msg" aria-label="With textarea"></textarea>
+                              <input type="hidden" name="con_status" value="Pending">
+                          </div>
+                          <button class="btn bg-dark text-white py-3 mt-3 px-4 w-100 fw-semibold rounded-0" type="submit" id="feedback" onclick="showAlert()">Send Your Message</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+      
+        
+      </div>
+      <div class="row py-5">
+        <iframe
+        class="w-100"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0520187970706!2d74.72775317466586!3d19.10537375105081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcb17ca9d749e5%3A0x516744f9b2f35ec9!2sA2Z%20IT%20HUB%20PVT.%20LTD.!5e0!3m2!1sen!2sin!4v1729847643337!5m2!1sen!2sin"
+          width="600" height="420" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+<script>
+    document.getElementById('con_date').value = new Date().toISOString().split('T')[0];
+
+
+    function showAlert() {
+  Swal.fire({
+    position: "center-center",
+    icon: "success",
+    title: "Your Contact Enquiry has been sent",
+    showConfirmButton: false,
+    timer: 2000
+  });}
+  showAlert()
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<%- include("footer.ejs") %>

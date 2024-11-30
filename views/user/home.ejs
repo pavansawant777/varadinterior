@@ -1,0 +1,352 @@
+<%- include("navbar.ejs") %>
+
+
+  <!-- slider -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 p-0">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
+          <div class="carousel-inner">
+
+            <% for(i of slider_data) { %>
+            <div class="carousel-item overflow-hidden active slider_img position-relative">
+              <div class="carousel_overlay text-white d-flex align-items-center">
+                <i class="fa-solid fa-quote-left common_color position-absolute"></i>
+                <div>
+                  <p class="fw-semibold common_color"><%=i.slider_head%></p>
+                  <h1><%=i.slider_subhead%></h1>
+                </div>
+                <i class="fa-solid fa-quote-right common_color position-absolute"></i>
+              </div>
+              <img src="/uploads/<%=i.slider_img%>" class="d-block w-100 vh-100" alt="slider images">
+            </div>
+
+            <% } %>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- slider_ended  -->
+
+  <!--About us-->
+  <div class="container py-5 about_us overflow-hidden">
+    <div class="row">
+      <div class="col-md-6 p-4 overflow-hidden" data-aos="fade-right">
+        <img src="/user/images/<%-about_us.about_us_image%>" class="img-fluid w-100 h-100"/>
+      </div>
+      <div class="col-md-6" data-aos="fade-left">
+        <h5 class="text-left mt-3 common_color">ABOUT US </h5>
+        <h1 class="mt-3 mb-4"><%-about_us.about_us_heading%></h1>
+        <p><%-about_us.about_us_description%></p>
+        <a href="#"><button class="btn d-flex px-5 py-2 bg-dark"><%-about_us.about_us_btn_title%></button></a>
+      </div>
+    </div>
+  </div>
+  <!--About us End-->
+
+  <!-- how we work? -->
+  <section style="background-color:#F8F9FA;">
+    <div class="container py-5 how_we_work">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h5 class="common_color"><%-work_sec.sec_heading%></h5>
+          <h1><%-work_sec.main_heading%></h1>
+          <p class="fs-5"><%-work_sec.sub_heading%></p>
+        </div>
+
+      </div>
+      <div class="row py-3">
+        <div class="col-md-4 p-4 col_hover">
+          <h1 class="font_100">01</h1>
+          <h5 class="mt-3 font_50">We Visit
+            You At Home</h5>
+          <p class="font_15 mt-3">We will measure your kitchen, ask you questions and start the actual design process
+            with you.</p>
+        </div>
+        <div class="col-md-4 p-4 col_hover">
+          <h1 class="font_100">02</h1>
+          <h5 class="mt-3 font_50">Preliminary Computer Designs
+            <p class="font_15 mt-3">We will measure your kitchen, ask you questions and start the actual design process
+              with you.</p>
+        </div>
+        <div class="col-md-4 p-4 col_hover">
+          <h1 class="font_100">03</h1>
+          <h5 class="mt-3 font_50">Begin The Detailed Design Process
+            <p class="font_15 mt-3">We will measure your kitchen, ask you questions and start the actual design process
+              with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- home we work End -->
+  <!-- our projects -->
+  <section class="bg-black">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h6 class=" fw-bold common_color mt-3">OUR PROJECT</h6>
+          <h1 class="text-white mt-3">Explore our kitchen designs</h1>
+          <p class="mb-0 mt-3 text-secondary fw-normal">Explore finished kitchens from some of our customers and see how
+            they created
+            their dream kitchen while getting ideas for your own.</p>
+        </div>
+      </div> 
+      
+      <div class="image-slider">
+        <% for(i of project_info) {%>
+        <div style="padding: 10px;" class="text-white text-center">
+          <img src="/user/images/project/<%=i.our_project_image%>" alt="Image 1">
+          <h2><%=i.our_project_title%></h2>
+          <p><%=i.our_project_description%></p>
+        </div>
+
+        <% } %>
+        
+
+    </div>
+      
+    </div>
+  </section>
+  <!--our projects end-->
+    <!-- Testimonial -->
+    <section style="background-color:#F8F9FA">
+      <div class="container py-5 Testimonial">
+        <div class="row">
+          <div class="col-md-6" >
+            <h5 class="common_color">TESTIMONIALS</h5>
+            <h2><%-test_info.testimonial_heading%></h2>
+            <p class="mt-2  fw-normal"><%-test_info.testimonial_description%></p>
+            <div class="card card-body border-0 rounded-0 p-5 shadow mt-5" data-aos="zoom-in" >
+              <p class="fs-5 fw-normal"><%-client1.client_description%></p>
+              <h5 class="common_color"><img height="45px" width="45px"
+                  class="border border-1 rounded-circle border-dark me-3" src="/admin/img/client_review/<%-client1.client_image%>" /><%-client1.client_name%></h5>
+            </div>
+          </div>
+          
+          <div class="col-md-6"  >
+            <div class="card card-body border-0 rounded-0 p-5 shadow mt-5" data-aos="zoom-in"  >
+              <p class="fs-5 fw-normal"><%-client2.client_description%></p>
+              <h5 class="common_color"><img height="45px" width="45px"
+                  class="border border-1 rounded-circle border-dark me-3" src="/admin/img/client_review/<%-client2.client_image%>" /><%-client2.client_name%></h5>
+            </div>
+            <div class="card card-body border-0 rounded-0 p-5 shadow mt-5" data-aos="zoom-in"  >
+              <p class="fs-5 fw-normal"><%-client3.client_description%></p>
+              <h5 class="common_color"><img height="45px" width="45px"
+                  class="border border-1 rounded-circle border-dark me-3" src="/admin/img/client_review/<%-client3.client_image%>" /><%-client3.client_name%></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonial ended -->
+     <!-- Project counter -->
+     <section class="counter_bg main" id="main">
+      <div class="container py-5 counte">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="common_color">QUALITY OF WORK</h5>
+            <h1 class="text-white fw-bold"><%=count.counter_head%></h1>
+          </div>
+          <div class="col-md-6 text-center" >
+            <div class="row ">
+    
+            
+    
+    
+              <div class="col-md-6 py-3 counter_row1 count-heading">
+                <h1 class="common_color  counte count" max-data="<%=count.int_count%>"></h1>
+                <h5 class="text-white mt-4">Interior Design</h5>
+              </div>
+    
+              <div class="col-md-6 py-3 counter_row2">
+                <h1 class="common_color border-end-0 counte count" max-data="<%=count.arc_count%>"></h1><span>+</span>
+                <h5 class="text-white">Architecture </h5>
+              </div>
+    
+              <div class="col-md-6 py-3 counter_row3">
+                <h1 class="common_color counte count" max-data="<%=count.con_count%>"><sup>+</sup></h1>
+                <h5 class="text-white">Construction</h5>
+              </div>
+    
+              <div class="col-md-6 py-3 ">
+                <h1 class="common_color counte count" max-data="<%=count.pro_count%>"><sup>+</sup></h1>
+                <h5 class="text-white">Project Completed</h5>
+              </div>
+    
+    
+             
+    
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  <!-- Project counter end -->
+    <!-- our blog -->
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h5 class="common_color text-center">OUR BLOG</h5>
+          <h1 class="text-center">Follow the latest news</h1>
+        </div>
+      </div>
+      <div class="row ">
+        <% for(i of bdata) { %>
+        <div class="col-md-4 mt-4 mb-3 blog_heading" >
+          <a href="#">
+            <div class="card border-0 bg-transparent rounded-0 h-100 img_hover ">
+            <div class="overflow-hidden allimg_size">
+              <img src="/user/images/blog/<%=i.blog_image%>" class="card-img-top rounded-0 h-100 w-100" alt="...">
+            </div>
+            <div class="card-body p-0 blog_heading">
+              <p class="mt-3 text-black"><i class="fa-solid fa-user common_color me-2"></i>By <%=i.blog_post_by%>
+              </p>
+              <h3 class="card-title text-black"><%=i.blog_head%></h3>
+              <p class="card-text  text-secondary blog_desc_css"><%=i.blog_desc%></p>
+              <a href="/blog"><p class="common_color">Read More</p></a>
+            </div>
+          </div>
+          </a>
+        </div>
+    
+        <% } %>
+        
+      </div>
+    </div>
+    
+    <!-- our blog end -->
+
+
+<!-- Modal WORK -->
+
+<section class="modal-bg">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+              <div class="modal-body p-0">
+                  <div class="form_container">
+                      <div class="form-box text-center rounded-4 shadow">
+                          <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <h1 class="title">Sign Up </h1>
+                          <div class="underline rounded-4"></div>
+                          <form action="/save_signup" method="post">
+                              <!-- Username field (only for Sign Up) -->
+                              <div class="input_group">
+                                  <div class="input_field namefield">
+                                      <i class="fa-solid fa-user"></i>
+                                      <input class="bg-transparent" type="text" placeholder="Full Name" name="fname">
+                                  </div>
+                              </div>
+
+                              <!-- Mobile field (only for Sign Up) -->
+                              <div class="input_group">
+                                  <div class="input_field numfield">
+                                      <i class="fa-solid fa-mobile-screen"></i>
+                                      <input class="bg-transparent" type="number" placeholder="Mobile" name="mobile">
+                                  </div>
+                              </div>
+
+                              <!-- Email field (shown for both Sign Up and Log In) -->
+                              <div class="input_group">
+                                  <div class="input_field emailfield">
+                                      <i class="fa-regular fa-envelope"></i>
+                                      <input class="bg-transparent" type="email" placeholder="Enter Email" name="email">
+                                  </div>
+                              </div>
+
+                              <!-- Password field (shown for both Sign Up and Log In) -->
+                              <div class="input_group">
+                                  <div class="input_field passwordfield">
+                                      <i class="fa-solid fa-key"></i>
+                                      <input class="bg-transparent" type="password" placeholder="Enter Password" name="password">
+                                  </div>
+                              </div>
+
+                              <!-- Toggle between Sign Up and Log In -->
+                              <div class="btn-field">
+                                  <button class="signupbtn" type="su" onclick="submitForm('/save_signup')">Sign Up</button>
+                                  <button class="loginbtn disable" type="button" onclick="submitForm('/login')">Log in</button>
+                                  
+                              </div>
+                              <div class="row text-center mt-2">
+
+                                <div class="col-md-12">
+                                  <a href="/login">Login</a>
+
+
+
+                                </div>
+
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<!-- Modal WORK -->
+
+<script>
+
+  function submitForm(action) {
+        const form = document.getElementById('authForm');
+        form.action = action;
+        form.submit();
+    }
+
+
+    
+    $(document).ready(function(){
+      $('.image-slider').slick({
+          infinite: true,  // Continuously loop
+          slidesToShow: 3,  // Show 3 images at once on desktop
+          slidesToScroll: 1,  // Scroll one image at a time
+          autoplay: true,  // Enable auto-scrolling
+          autoplaySpeed: 3000,  // Set speed for auto-scrolling (in milliseconds)
+          arrows: false,  // Optional: hide the navigation arrows
+          dots: true,  // Optional: show dots for navigation
+          responsive: [
+            {
+              breakpoint: 768,  // Mobile screen size
+              settings: {
+                slidesToShow: 1  // Show only one image at a time on mobile
+              }
+            }
+          ]
+      });
+    });
+
+
+</script>
+
+
+
+
+    <%- include("footer.ejs") %>

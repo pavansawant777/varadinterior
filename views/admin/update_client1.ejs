@@ -1,0 +1,36 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 p-3 shadow">
+
+    <form action="/admin/update_client1" method="post" enctype="multipart/form-data"> 
+        <div class="container">
+            <div class="row">
+                <div class="p-1 col-md-12">
+                    <h2>Update Review Client 1</h2>
+                    <input type="hidden" name="client_id" value="<%-client1.client_id%>">
+                </div>
+                <div class="p-1 col-md-6">
+                    <label class="p-2">Client Name</label>
+                    <input type="text" name="client_name" value="<%-client1.client_name%>" class="form-control" placeholder="Enter Client Name">
+                </div>
+                <div class="p-1 col-md-4 col-9">
+                    <label class="p-2">Client Image</label>
+                    <input type="file" name="client_image"  class="form-control">
+                </div>
+                <div class="p-1 col-md-2 col-3 mt-5">
+                    <img src="/admin/img/client_review/<%-client1.client_image%>" width="80px">
+                </div>
+                <div class="p-1 col-md-12">
+                    <label class="p-2">Client Review Description</label>
+                    <textarea name="client_description" class="form-control rounded" placeholder="Enter Client Review Description"><%-client1.client_description%></textarea>
+                </div>
+                <div class="p-1 col-md-12 text-end">
+                    <button class="btn btn-warning">Update Information</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<%- include("footer.ejs") %>

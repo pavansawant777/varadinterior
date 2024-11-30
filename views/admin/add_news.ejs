@@ -1,0 +1,58 @@
+<%- include('navbar.ejs')%>
+
+<div class="card card-body rounded-0 p-3 shadow">
+
+    <form action="/admin/save_news" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Add News</h3>
+                </div>
+                <div class="mt-2 col-md-6">
+                    <label for="" class="mb-1">Select date</label>
+                    <input type="date" name="news_date" class="form-control">
+                </div>
+                <div class="mt-2 col-md-6">
+                    <label for="" class="mb-1">Select image</label>
+                    <input type="file" name="news_image" class="form-control">
+                </div>
+                <div class="mt-2 col-md-12">
+                    <label for="" class="mb-1">Enter News Description</label>
+                    <textarea name="news_desc" class="form-control" placeholder="Enter News Description"></textarea>
+                </div>
+                <div class="col-md-12 mt-3 text-end">
+                    <button class="btn btn-warning">Add News</button>
+                </div>
+        </div>
+    </form>
+
+</div>
+
+
+<div class="container mt-3 pb-5 overflow-x-scroll table-responsive">
+    <h3>All News List</h3>
+    <table class="table table-bordered border-warning text-center">
+        <tr>
+            <th>Action</th>
+            <th>Sr No</th>
+            <th>News Date</th>
+            <th>News Description</th>
+            <th>News image</th>
+        </tr>
+        <% sr=1;for(i of news){%>
+            <tr>
+                <td>
+                    <a href="/admin/edit_news/<%-i.news_id%>"><i
+                        class="bi bi-pencil-square text-success"></i></a>&nbsp;&nbsp;
+                <a href="/admin/delete_news/<%-i.news_id %>"><i
+                        class="bi bi-trash text-danger"></i></a>
+                </td>
+                <td><%-sr++%></td>
+                <td><%-i.news_date%></td>
+                <td><%-i.news_desc%></td>
+                <td><img src="/user/images/news/<%-i.news_image%>" class="w-25 img-fluid"></td>
+            </tr>
+        <%}%>
+    </table>
+</div>
+<%- include('footer.ejs')%>

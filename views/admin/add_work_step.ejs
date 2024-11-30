@@ -1,0 +1,54 @@
+<%-include('navbar.ejs')%>
+<h4>Add Work Steps</h4>
+
+<div class="card card-body rounded-0 p-3 shadow">
+<form action="/admin/save_add_work" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col md 6">
+                <label class="m-2" for="working_step_heading">Add Heading</label>
+                <input type="text" name="working_step_heading" class="form-control rounded text-black" placeholder="Write Heading">
+            </div>
+            <div class="col-md-6">
+                <label class="m-2" for="working_step_description">Add Description</label>
+                <input type="text" name="working_step_description" class="form-control rounded text-black" placeholder="write Description">
+            </div>
+            <div class="col-md-12 text-end">
+                <button class="btn btn-warning mt-3">Add Information</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+</div>
+
+
+
+<div class="container card card-body shadow table-responsive">
+  <h1>List of Work Section Heading</h1>
+    <table class="table table-bordered border-warning text-center overflow-x-auto">
+        <thead>
+          <tr>
+            <th scope="col">Action</th>
+            <th scope="col">Sr No</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%sr=1;for(i of old_data){%>
+            <tr>
+              <td>
+                <a href="/admin/edit_work_step/<%-i.work_sec_id%>"><i class="bi bi-pencil-square text-success"></i></a>&nbsp;&nbsp;
+                <a href="/admin/delete_work_step/<%-i.work_sec_id%>"><i class="bi bi-trash text-danger"></i></a>
+              </td>
+              <td><%-sr++%></td>
+              <td><%-i.working_step_heading%></td>
+              <td><%-i.working_step_description%></td>
+            </tr>
+            
+          <% } %>
+        </tbody>
+      </table>
+</div>
+<%-include('footer.ejs')%>  

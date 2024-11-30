@@ -1,0 +1,24 @@
+<%- include('navbar.ejs') %>
+<div class="card card-body shadow py-3">
+<h4>Edit Work Steps</h4>
+<form action="/admin/update_add_work_step" method="post">
+    <input type="hidden" name="work_sec_id" value="<%-data.work_sec_id%>">
+    <div class="container">
+        <div class="row">
+            <div class="col md 6">
+                <label class="m-2" for="working_step_heading">Add Heading</label>
+                <input type="text" name="working_step_heading" class="form-control rounded text-black" value="<%-data.working_step_heading%>">
+            </div>
+            <div class="col-md-6">
+                <label class="m-2" for="working_step_description">Add Description</label>
+                <input type="text" name="working_step_description" class="form-control rounded text-black" value="<%-data.working_step_description%>">
+            </div>
+            <div class="col-md-12 text-end">
+                <button class="btn btn-warning mt-3">Update Information</button>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+<%- include('footer.ejs') %>

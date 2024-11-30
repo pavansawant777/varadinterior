@@ -1,0 +1,53 @@
+<%- include('navbar.ejs')%>
+
+<div class="card card-body rounded-0 p-3 shadow">
+    <form action="/admin/update_blog_details" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Update Blog Details</h3>
+                    <input type="hidden" name="blog_id" value="<%-blog_det.blog_id%>" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="">Update Category</label>
+                    <select name="cat_id" class="form-control">
+                        <option value="<%-blog_det.cat_id%>">Select update Category</option>
+                        <%for(i of cat){%>
+                        <option value="<%-i.cat_id%>"><%-i.blog_cat%></option>
+                        <%}%>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Blog Heading</label>
+                    <input type="text" name="blog_head" value="<%-blog_det.blog_head%>" class="form-control">
+                </div>
+                <div class="col-md-6">
+    
+                    <label for="">Blog Post By</label>
+                    <input type="text" name="blog_post_by" value="<%-blog_det.blog_post_by%>" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="">Blog Image</label>
+                    <input type="File" name="blog_image" class="form-control">
+                </div>
+                <div class="col-md-2">
+                   <label for="">Image</label>
+                   <img src="/user/images/blog/<%-blog_det.blog_image%>" class="w-50 form-control">
+                </div>
+                <div class="col-md-12">
+                    <label for="">Blog Description</label>
+                    <textarea name="blog_desc" class="form-control"><%-blog_det.blog_desc%></textarea>
+                </div>
+                <div class="col-md-12 text-end mt-3">
+                    <button class="btn btn-warning">Update Blog</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+
+
+<%- include('footer.ejs')%>

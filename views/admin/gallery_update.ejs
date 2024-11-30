@@ -1,0 +1,30 @@
+<%- include('navbar.ejs')%>
+    <div class="card card-body rounded-0 p-3 shadow">
+        <h1 class="text-center py-2">Gallery Section</h1>
+
+        <form action="/admin/update_gallery" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<%=gdata.id%>">
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="py-3">Select Gallery Image</label>
+                    <input type="file" class="form-control" name="gallery_img">
+                </div>
+
+                <div class="col-md-3">
+                    <img src="/uploads/<%=gdata.gallery_img%>" width="200px">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="py-3">Gallery Image Heading</label>
+                    <input type="text" class="form-control" name="gallery_head" value="<%=gdata.gallery_head%>">
+                </div>
+                <div class="col-md-12 text-center py-3">
+                    <button class="btn btn-primary">Update Gallery</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    
+<%- include('footer.ejs')%>

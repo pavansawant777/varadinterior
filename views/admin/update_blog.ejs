@@ -1,0 +1,43 @@
+<%- include("navbar.ejs") %>
+
+<div class="card card-body rounded-0 p-3 shadow ">
+    <h1 class="text-center mt-3 mb-3"> Updata Blog </h1>
+
+
+    <form action="/admin/update_blog" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%=bdata.id%>">
+
+        <div class="row">
+            <div class="col-md-3">
+                <label class="mt-3">Select Blog Image</label>
+                <input type="file" class="form-control mt-3 mb-3" name="blog_img">
+            </div>
+
+            <div class="col-md-3">
+                <img src="/uploads/<%=bdata.blog_img%>" width="100px">
+            </div>
+
+            <div class="col-md-6">
+                <label class="mt-3">Bloger's Name</label>
+                <input type="text" class="form-control mt-3 mb-3" name="bloger_name" value="<%=bdata.bloger_name%>">
+            </div>
+
+            <div class="col-md-6">
+                <label class="mt-3">Blog Heading</label>
+                <input type="text" class="form-control mt-3 mb-3" name="blog_head" value="<%=bdata.blog_head%>">
+            </div>
+
+            <div class="col-md-6">
+                <label class="mt-3">Blog' Details</label>
+                <textarea class="form-control mt-3 mb-3" rows="5" name="blog_details"><%=bdata.blog_details%></textarea>
+            </div>
+
+            <div class="col-md-12 text-center mt-3">
+                <button class="btn btn-warning ">Save Blog</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<%- include("footer.ejs") %>

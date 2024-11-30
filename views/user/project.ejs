@@ -1,0 +1,101 @@
+<%- include("navbar.ejs")%>
+
+
+
+
+<section class="project_bg" data-aos="fade-down" data-aos-duration="500">
+    <div class="container py-5 topbar">
+      <div class="row py-5">
+        <h1 class="text-white text-center">Our Projects</h1>
+        <nav class="breadnav" aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item fs-5">
+              <a class="text-decoration-none text-white" href="/index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item fs-5 active text-warning" aria-current="page">
+              Our Projects
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!-- Project bread end -->
+  <div class="container py-5">
+    <div class="row">
+      <% for(i of pdata) { %>
+      <div class="col-sm-6 col-lg-4 p-2" >
+        <a href="/project_details/<%-i.id%>">
+          <div class="position-relative card_div">
+            <div class="card card-body position-absolute bg-white rounded-0 border-0 arrow-card text-center shadow-lg">
+              <i class="fa-solid fa-arrow-right common_color fs-4"></i>
+            </div>
+            <div class="position-relative master allimg_size">
+              <div class="overlay-divs p-3">
+                <p class="text-white"><%=i.project_type%></p>
+                <h2 class="common_color"><%=i.project_name%></h2>
+              </div>
+              <img src="/uploads/<%=i.project_img%>" alt="Blog Image" class="img-fluid h-100 w-100" >
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <% } %>
+      
+      <!-- Pagination -->
+      <!-- <nav aria-label="Page navigation example">
+        <ul class="pagination mt-4 justify-content-center">
+          <li class="page-item p-1">
+            <a class="page-link bg-dark text-white rounded-0" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item p-1"><a class="page-link bg-dark text-white rounded-0" href="#">1</a></li>
+          <li class="page-item p-1"><a class="page-link bg-dark text-white rounded-0" href="#">2</a></li>
+          <li class="page-item p-1"><a class="page-link bg-dark text-white rounded-0" href="#">3</a></li>
+          <li class="page-item p-1">
+            <a class="page-link bg-dark text-white rounded-0" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav> -->
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination mt-4 justify-content-center">
+            <!-- Previous Page Link -->
+            <li class="page-item p-1 <%= pagination.hasPrevPage ? '' : 'disabled' %>">
+                <a class="page-link bg-dark text-white rounded-0" href="?page=<%= pagination.currentPage - 1 %>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+    
+            <!-- Page Number Links -->
+            <% for (let i = 1; i <= pagination.totalPages; i++) { %>
+                <li class="page-item p-1 <%= i === pagination.currentPage ? 'active' : '' %>">
+                    <a class="page-link bg-dark text-white rounded-0" href="?page=<%= i %>"><%= i %></a>
+                </li>
+            <% } %>
+    
+            <!-- Next Page Link -->
+            <li class="page-item p-1 <%= pagination.hasNextPage ? '' : 'disabled' %>">
+                <a class="page-link bg-dark text-white rounded-0" href="?page=<%= pagination.currentPage + 1 %>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    
+    
+    
+      <!-- Pagination end -->
+    </div>
+  </div>
+  
+
+
+
+
+<%- include("footer.ejs")%>

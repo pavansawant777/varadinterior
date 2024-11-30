@@ -1,0 +1,50 @@
+<%- include('navbar.ejs')%>
+    <div class="card card-body rounded-0 p-3 shadow">
+        <h1 class="text-center py-2">Gallery Section</h1>
+
+        <form action="/admin/save_gallery" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="py-3">Select Gallery Image</label>
+                    <input type="file" class="form-control" name="gallery_img">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="py-3">Gallery Image Heading</label>
+                    <input type="text" class="form-control" name="gallery_head">
+                </div>
+                <div class="col-md-12 text-center py-3">
+                    <button class="btn btn-primary">Save Gallery</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="card card-body rounded-0 p-3 shadow table-responsive">
+        <h2 class="text-center py-2"> Gallery Details</h2>
+        <table class="table table-bordered ">
+
+            <tr>
+                <th>Sr</th>
+                <th>Actions</th>
+                <th>Gallery Image</th>
+                <th>Gallery Heading</th>
+            </tr>
+
+            <%sr=1; for(i of gdata) { %>
+                <tr>
+                    <td><%=sr++%></td>
+                    <td>
+                        <a href="/admin/gallery_delete/<%=i.id%>" ><button class="btn btn-sm btn-danger"> <i class="fa-solid fa-trash"></i></button></a>
+                        <a href="/admin/gallery_update/<%=i.id%>" ><button class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i></button></a>
+                    </td>
+                    <td> <img src="/uploads/<%=i.gallery_img%>" width="200px"> </td>
+                    <td><%=i.gallery_head%></td>
+                </tr>
+            
+            <% } %>
+
+        </table>
+    </div>
+<%- include('footer.ejs')%>

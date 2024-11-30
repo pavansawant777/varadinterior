@@ -1,0 +1,28 @@
+
+<%- include("navbar.ejs")%>
+
+<div class="card card-body rounded-0 p-3 shadow">
+    <h2 class="text-center py-2">FAQ's Page</h2>
+
+    
+    <form action="/admin/updatefaq" method="post">
+        <input type="hidden" name="id" value="<%-fdata.id%>">
+        <div class="row">
+            <div class="col-md-6">
+                <label>FAQ's Question</label>
+                <input type="text" class="form-control" name="faqque" value="<%-fdata.faq_que%>">
+            </div>
+            <div class="col-md-6">
+                <label>FAQ's Answer</label>
+                <textarea name="faqans" rows="10" class="form-control"><%=fdata.faq_ans%></textarea>
+            </div>
+
+            <div class="col-md-12 text-center py-3">
+                <button class="btn btn-warning">Update FAQ's</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<%- include("footer.ejs") %>

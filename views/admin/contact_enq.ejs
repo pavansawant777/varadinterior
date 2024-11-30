@@ -1,0 +1,195 @@
+<%- include("navbar.ejs") %>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<div class="card card-body rounded-0 p-3 shadow table-responsive">
+    <h1 class="text-center py-3">Contact Enquiry</h1>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Sr</th>
+            <th>Status</th>
+            <th>Approved / Rejected</th>
+            <th>Date of Enq</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Enquiry About</th>
+            <th>Message for us</th>
+            
+            <th>Action</th>
+        </tr>
+
+        <% sr = 1; for (let i of cdata) { %>
+            <tr>
+                <td class="py-3"><%= sr++ %></td>
+                <td class="py-3">
+                    <button type="button" class="btn btn-sm status-btn"  data-status="<%= i.status %>">
+                        <%= i.status %>
+                    </button>
+                    <!-- <input type="text" name="con_status" class="status-btn" data-status="<%=i.status%>" value="<%=i.status%>"> -->
+                    <!-- <button onclick="showStatusPicker()"> upd</button> -->
+                    
+                </td>
+                <td class="pt-3">
+                    <a href="/admin/status_app/<%=i.id%>">
+                        <button class="btn btn-sm btn-success">Approved</button>
+                     </a>
+                     <a href="/admin/status_rej/<%=i.id%>">
+                        <button class="btn btn-sm btn-danger mt-1">Rejected</button>
+                     </a>
+
+                </td>
+                <td><%=i.con_date%></td>
+                <td class="py-3"><%= i.enq_fname %></td>
+                <td class="py-3"><%= i.enq_lname %></td>
+                <td class="py-3"><%= i.enq_mobile %></td>
+                <td class="py-3"><%= i.enq_email %></td>
+                <td class="py-3"><%= i.enq_about %></td>
+                <td class="py-3"><%= i.enq_msg %></td>
+                <td>
+                    <a href="/admin/delete_enq/<%=i.id%>">
+                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                    </a>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+</div>
+
+<script>
+    // JavaScript to dynamically update button color based on status
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all buttons with the class 'status-btn'
+        const statusButtons = document.querySelectorAll(".status-btn");
+
+        statusButtons.forEach((button) => {
+            // Get the status from the data attribute
+            const status = button.getAttribute("data-status");
+
+            // Set the button class based on the status
+            if (status === "Pending") {
+                button.classList.remove("btn-warning");
+                button.classList.add("btn-warning");
+            } else if (status === "Approved") {
+                button.classList.remove("btn-warning");
+                button.classList.add("btn-success");
+            } else if (status ==="Rejected"){
+                button.classList.remove("btn-warning");
+                button.classList.add("btn-danger")
+            } 
+        });
+    });
+</script>
+
+
+
+<script>
+      async function showStatusPicker() {
+      const inputOptions = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            approved: "Approved",
+            reject: "Rejected"
+          });
+        });
+      });
+
+      const { value: status } = await Swal.fire({
+        title: "Select Status",
+        input: "radio",
+        inputOptions: await inputOptions, // Await the promise to resolve the options
+        inputValidator: (value) => {
+            console.log(value)
+          if (!value) {
+            
+            return "You need to choose something!";
+          }
+        }
+      });
+
+      if (status) {
+        Swal.fire({ html: `You selected: <strong>${status.charAt(0).toUpperCase() + status.slice(1)}</strong>` });
+      }
+    }
+
+    // Call the function on page load
+    showStatusPicker();
+
+  </script>
+
+
+<!-- <script>
+    async function showStatusPicker(input) {
+      const inputOptions = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            approved: "Approved",
+            pending: "Pending",
+          });
+        });
+      });
+
+      const { value: status } = await Swal.fire({
+        title: "Select Status",
+        input: "radio",
+        inputOptions: await inputOptions, 
+        inputValidator: (value) => {
+          if (!value) {
+            
+            return "You need to choose something!";
+          }
+        },
+      });
+  
+      if (status) {
+        const currentStatus = input.getAttribute("data-status");
+  
+        if (currentStatus !== "Pending" && status === "Approved") {
+        
+          input.textContent = "Approved";
+          input.setAttribute("data-status", "approved");
+          input.classList.add("btn-success");
+          input.classList.remove("btn-warning");
+  
+          Swal.fire({
+            icon: "success",
+            html: `Status changed to: <strong>${status.charAt(0).toUpperCase() + status.slice(1)}</strong>`,
+          });
+  
+          
+          const id = input.closest("tr").getAttribute("data-id");
+          await fetch(`/admin/update_status/${id}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ status }),
+          });
+        } else {
+          Swal.fire({
+            icon: "info",
+            text: "No changes made!",
+          });
+        }
+      }
+    }
+  
+   
+    document.querySelectorAll(".status-btn").forEach((input) => {
+      button.addEventListener("click    ", () => showStatusPicker(button));
+    });
+  </script> -->
+  
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<%- include("footer.ejs") %>
+
+
+
